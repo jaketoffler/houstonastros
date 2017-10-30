@@ -1,4 +1,5 @@
 # Author: Jake Toffler
+# GitHub: https://github.com/jaketoffler
 # Date: 10/30/2017
 """
 Pitchers' Repertoires

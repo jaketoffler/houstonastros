@@ -99,11 +99,11 @@ def outputGenerator(filename, dict):
     f.close()
 
 
-
+# Change your filepaths here
 pitchers_file = "AL Pitchers.csv"
 pitcherDict_file = "pitcherDict.txt"
 
-
+# These are the steps to run the program.  This should not need to be changed if the filepaths are correct.
 pitchers_list = (pitcherIDs(pitchers_file))
 pitcherDict = dictionaryInitializer(pitcherDict_file)
 repertoireDict = repertoireScraper(pitchers_list, pitcherDict)

@@ -14,33 +14,41 @@ pandas.options.display.max_rows = 4
 """
 Pitchers' Repertoires
 
-For all pitchers in the Brooks Baseball database, find how many pitches they have. This information may be used as
-a sort of "response variable" to complement Sig's data.
+For all pitchers in a given pitchFX dataset, find how many pitches they have according to the Brooks Baseball database. 
 
-Once we have a list of pitchers and the number of pitches they throw, we can compare this to the pitchers
-in Sig's data and see how similar they are.  Hopefully, they will be similar which means we can use this as a way
-to train our model to count the number of clusters.
+In my context, this information will be used to compare the number of pitches a player has according to Brooks Baseball
+against the number of pitches a player has according to my dataset.  Hopefully, they will be similar which means I will
+be able to use this as a response variable to train my clustering model on how to count the number of pitch clusters a 
+given pitcher should have.
 """
 
 
-def playerIDs(filename):
+#def playerIDs(filename):
+#    """
+#    This function inputs the playerID csv found here: http://legacy.baseballprospectus.com/sortable/playerid_list.php,
+#    opens it as a Pandas dataframe, and outputs a list of playerIDs used in the Brooks Baseball url.
+#    The list will inevitably change.  If you need to re-run this program, I recommend keeping the old player ID list,
+#    downloading the new list, and running it on only the player IDs that are in the new list and not the old list.
+#    That said, if a player's repertoire changes, this method could miss that change.
+#    """
+#    table = pandas.read_csv(filename)
+#    player_table = table[['LASTNAME', 'FIRSTNAME', 'MLBCODE']]
+#    return player_table
+
+def pitcherIDs(filename):
     """
-    This function inputs the playerID csv found here: http://legacy.baseballprospectus.com/sortable/playerid_list.php,
-    opens it as a Pandas dataframe, and outputs a list of playerIDs used in the Brooks Baseball url.
-    The list will inevitably change.  If you need to re-run this program, I recommend keeping the old player ID list,
-    downloading the new list, and running it on only the player IDs that are in the new list and not the old list.
-    That said, if a player's repertoire changes, this method could miss that change.
+    This function inputs the pitchFX dataset (which already includes the pitcher's ID) and outputs a list of unique IDs
     """
     table = pandas.read_csv(filename)
-    playerID_list = table['MLBCODE']
-    return playerID_list
-
+    pitchers = table['pitcher_id'].drop_duplicates()
+    return pitchers
 
 
 def dictionaryInitializer(filename):
     """
-    This function inputs a file and checks to see whether or not it exists.  If it does, it will take the text of that
-    file and turn it into a dictionary.  Otherwise, it will create an empty dictionary.
+    This function inputs a text file and checks to see whether or not it exists.  If it does, it will take the text of
+    that file and evaluate it.  The text of this fileshould be a dictionary turned into a string.  If you have not
+    already created this file, it will initiate an empty dictionary.
     This dictionary will store every pitcher the pitches they throw, according to Brooks Baseball.
     """
     if os.path.isfile(filename):
@@ -91,13 +99,12 @@ def outputGenerator(filename, dict):
     f.close()
 
 
-playerID_file = ("playerid_list.csv")
-pitcherDict_file = ("pitcherDict.txt")
+
+pitchers_file = "AL Pitchers.csv"
+pitcherDict_file = "pitcherDict.txt"
 
 
+pitchers_list = (pitcherIDs(pitchers_file))
 pitcherDict = dictionaryInitializer(pitcherDict_file)
-playerID_list = (playerIDs(playerID_file))
-
-repertoireDict = repertoireScraper(playerID_list, pitcherDict)
-
+repertoireDict = repertoireScraper(pitchers_list, pitcherDict)
 outputGenerator(pitcherDict_file, repertoireDict)

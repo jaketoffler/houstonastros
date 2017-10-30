@@ -1,5 +1,15 @@
 # Author: Jake Toffler
 # Date: 10/30/2017
+"""
+Pitchers' Repertoires
+
+For all pitchers in a given pitchFX dataset, find how many pitches they have according to the Brooks Baseball database.
+
+In my context, this information will be used to compare the number of pitches a player has according to Brooks Baseball
+against the number of pitches a player has according to my dataset.  Hopefully, they will be similar which means I will
+be able to use this as a response variable to train my clustering model on how to count the number of pitch clusters a
+given pitcher should have.
+"""
 
 import pandas
 import re
@@ -10,18 +20,6 @@ from bs4 import BeautifulSoup
 
 # Don't display too much data
 pandas.options.display.max_rows = 4
-
-"""
-Pitchers' Repertoires
-
-For all pitchers in a given pitchFX dataset, find how many pitches they have according to the Brooks Baseball database. 
-
-In my context, this information will be used to compare the number of pitches a player has according to Brooks Baseball
-against the number of pitches a player has according to my dataset.  Hopefully, they will be similar which means I will
-be able to use this as a response variable to train my clustering model on how to count the number of pitch clusters a 
-given pitcher should have.
-"""
-
 
 #def playerIDs(filename):
 #    """

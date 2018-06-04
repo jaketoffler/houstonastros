@@ -1,0 +1,13 @@
+To use this clustering algorithm, you'll need to first set up the environment.  You'll need to download Python (https://www.python.org/downloads/).  
+
+Download clusters.py and requirements.txt from this Github repository (https://github.com/jaketoffler/houstonastros/tree/master/Clustering) and place them in the same directory as the raw pitcher data file.
+
+Then in bash (Terminal for Macs or Command Prompt for Windows) navigate to the directory where these files are stored.  Run the following command:
+
+pip install requirements.txt
+
+Your environment is now set up.  To run the application, run the following command:
+
+python clusters.py [NAME OF RAW CSV FILE]
+
+A new CSV will be created in that directory with an additional column representing the predicted labels.

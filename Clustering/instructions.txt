@@ -10,4 +10,4 @@ Your environment is now set up.  To run the application, run the following comma
 
 python cluster.py [NAME OF RAW CSV FILE]
 
-A new CSV will be created in that directory with an additional column representing the predicted labels.
+A new CSV called pitch_clusters.csv will be created in that directory that is identical to the input CSV with the exception of an additional column representing the predicted labels.

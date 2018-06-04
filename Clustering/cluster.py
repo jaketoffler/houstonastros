@@ -252,7 +252,7 @@ def cluster(df, k, prune_threshold, distance_threshold, eps, min_samples):
     pitcher_names = df['pitcher_name'].unique()
     df_list = []
     counter = 1
-    for pitcher in pitcher_names[0:3]:
+    for pitcher in pitcher_names:
         print("Clustering pitcher " + str(counter) + " of " + str(len(pitcher_names)))
         pitcher_df = classify_pitches(df, pitcher, k, prune_threshold)
         pitcher_df['reclass'] = np.where(pitcher_df['labels'] == -1, 1, 0)

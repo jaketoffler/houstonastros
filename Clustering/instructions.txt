@@ -8,6 +8,6 @@ pip install requirements.txt
 
 Your environment is now set up.  To run the application, run the following command:
 
-python clusters.py [NAME OF RAW CSV FILE]
+python cluster.py [NAME OF RAW CSV FILE]
 
 A new CSV will be created in that directory with an additional column representing the predicted labels.

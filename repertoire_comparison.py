@@ -11,6 +11,8 @@ To create the text file which stores a dictionary of each pitcher and their repe
 """
 
 import pandas
+import matplotlib.pyplot as plt
+
 
 # Don't display too much data
 #pandas.options.display.max_rows = 4
@@ -39,4 +41,9 @@ FXPitches = pitchTable[["pitcher_name", "cluster_num"]].drop_duplicates(subset =
 
 
 combinedPitches = pandas.merge(left = BBPitches, right = FXPitches, how = "left", on = "pitcher_name")
-print combinedPitches
+combinedPitches['Difference'] = (combinedPitches['cluster_num'] - combinedPitches['pitches'])
+print combinedPitches['Difference'].mean()
+print combinedPitches['Difference'].max()
+
+
+#plt.hist(combinedPitches['Difference'])

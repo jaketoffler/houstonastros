@@ -1,0 +1,4 @@
+pandas==0.20.1
+numpy==1.14.2
+debacl==1.1
+sklearn==0.0
